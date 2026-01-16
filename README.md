@@ -1,98 +1,191 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# RHizoma 🌳 — Onde pessoas criam raízes e crescem juntas.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+O **RHizoma** é um sistema de gestão de Recursos Humanos (RH) desenvolvido como Projeto Integrador na **Generation Brasil (Turma JavaScript 12)**. A aplicação foca no cadastro e gerenciamento de colaboradores, oferecendo uma base sólida para a administração de capital humano em organizações que valorizam o crescimento conjunto.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+***
 
-## Description
+## 📌 Sumário
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. [Visão Geral do Projeto](#-visão-geral-do-projeto)
+2. [Público-alvo e Casos de Uso](#-público-alvo-e-casos-de-uso)
+3. [Principais Funcionalidades](#-principais-funcionalidades)
+4. [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+5. [Arquitetura e Banco de Dados](#-arquitetura-e-banco-de-dados)
+6. [Requisitos do Sistema](#-requisitos-do-sistema)
+7. [Instalação](#-instalação)
+8. [Configuração Inicial](#-configuração-inicial)
+9. [Estrutura do Projeto](#-estrutura-do-projeto)
+10. [Boas Práticas](#-boas-práticas)
+11. [Como Contribuir](#-como-contribuir)
+12. [Licença](#-licença)
 
-## Project setup
+***
 
-```bash
-$ npm install
+## 🔎 Visão Geral do Projeto
+
+O **RHizoma** surge da necessidade de centralizar informações críticas de colaboradores. O nome faz alusão ao conceito botânico de rizoma — sistemas de raízes que se conectam e crescem horizontalmente — refletindo nossa visão de que o sucesso de uma empresa depende da conexão e do suporte entre seus membros.
+
+***
+
+## 👥 Público-alvo e Casos de Uso
+
+### Quem deve ler este README?
+- **Desenvolvedores e Avaliadores**: Que desejam entender a construção técnica da API.
+- **Gestores de RH**: Interessados em uma solução simplificada para controle de pessoal.
+
+### Exemplos de cenários de uso
+- Consultar todos os colaboradores.
+- Consultar por ID.
+- Consultar por cargos.
+- Cadastro de novos colaboradores.
+- Atualizar informações do colaborador.
+- Excluir colaborador.
+
+***
+
+## ✅ Principais Funcionalidades
+
+- 👤 **Gestão de Colaboradores**: CRUD completo (Criar, Ler, Atualizar e Deletar) de informações dos Colaboradores.
+- 📅 **Registro de Admissão**: Controle preciso da data de entrada no sistema.
+- 🔍 **Busca Filtrada**: Localização de colaboradores por cargo ou ID.
+
+***
+
+## 🚀 Tecnologias Utilizadas
+
+- **Node.js** & **NestJS**: Framework progressivo para construção de aplicações server-side eficientes.
+- **TypeScript**: Adição de tipagem estática ao JavaScript para maior segurança.
+- **MySQL**: Banco de dados relacional para persistência de dados.
+- **TypeORM**: Ferramenta de mapeamento objeto-relacional para integração com o banco.
+- **Class Validator**: Validação de dados de entrada nos DTOs.
+
+***
+
+## 🧱 Arquitetura e Banco de Dados
+
+O projeto segue a arquitetura modular do NestJS, dividindo as responsabilidades em **Controllers** (rotas), **Services** (regras de negócio) e **Entities** (mapeamento do banco).
+
+### Modelo de Dados (Tabela `tb_colaborador`)
+Conforme o diagrama, a entidade principal possui os seguintes atributos:
+- `id`: Identificador único (Primary Key).
+- `nome`: Nome completo do colaborador (VARCHAR).
+- `cargo`: Função exercida (VARCHAR).
+- `salario`: Valor da remuneração (INT/DECIMAL).
+- `data_ad`: Data de admissão (DATETIME).
+
+```mermaid
+erDiagram
+    TB_COLABORADOR {
+        INT id PK
+        VARCHAR nome "VARCHAR(100)"
+        VARCHAR cargo "VARCHAR(100)"
+        INT salario
+        DATETIME data_ad "DATETIME(6)"
+    }
 ```
 
-## Compile and run the project
+***
 
+## ▶️ Como executar o projeto
+
+### 📋 Pré-requisitos
+1. **Node.js** (v18 ou superior)
+2. **MySQL** (v8.0 ou superior)
+3. Gerenciador de pacotes (**npm** ou **yarn**)
+
+### 🚀 Passo a passo
+1. Clone o repositório:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/SEU-USUARIO/rhizoma-backend.git
+```
+2. Entre na pasta:
+```bash
+cd rhizoma-backend
+```
+3. Instale as dependências:
+```bash
+npm install
+```
+4. Execute a aplicação em modo de desenvolvimento:
+```bash
+npm run start:dev
 ```
 
-## Run tests
+***
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+### 📂 Estrutura do Projeto
+```bash                 
+├── node_modules            
+├── src
+│   ├── colaborador
+│   │   ├── controllers
+│   │   │   └── colaborador.controller.ts   
+│   │   ├── entities
+│   │   │   └── colaborador.entity.ts       
+│   │   ├── services
+│   │   │   └── colaborador.service.ts      
+│   │   └── colaborador.module.ts           
+│   ├── app.controller.ts                   
+│   ├── app.module.ts                       
+│   ├── app.service.ts                      
+│   └── main.ts                             
+├── test                                   
+├── .gitignore
+├── .prettierrc
+├── eslint.config.mjs
+├── nest-cli.json
+├── package.json
+├── package-lock.json
+├── README.md
+├── tsconfig.build.json
+└── tsconfig.json
 ```
 
-## Deployment
+***
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 📏 Boas Práticas e Padrões do Projeto
+ - Padrões de código
+    - Siga o guia de estilo definido (ex.: ESLint, PEP8, SonarLint etc.).
+    - Nomeie módulos e arquivos de forma clara e consistente.
+ - Commits
+    - Use mensagens de commit descritivas.
+    - Sugestão: padrão semântico (ex.: feat:, fix:, docs:, chore:).
+ - Testes
+    - Escreva testes para novas funcionalidades.
+Não quebre testes existentes sem justificativa e atualização adequada.
+ - Logs e monitoramento
+    - Use níveis de log adequados (info, warn, error, debug).
+    - Evite logar dados sensíveis.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 🤝 Como Contribuir
 
+1. Faça um fork do repositório (se aplicável).
+2. Crie uma branch descritiva:
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+git checkout -b feat/nome-da-funcionalidade
 ```
+3. Implemente a funcionalidade ou correção, seguindo:
+    - Padrões de código
+    - Padrão de testes
+4. Execute os testes antes de enviar:
+```bash
+npm test
+```
+5. Abra um Pull Request, descrevendo:
+    - O problema resolvido ou funcionalidade criada.
+    - Passos para testar.
+    - Impactos em outras partes do sistema (se houver).
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+***
 
-## Resources
+<table>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/alberto-janeiro"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/67593467?v=44" width="100px;" alt=""/><br /><sub><b>Alberto Durán</b></sub></a><br />❤️</td>
+    <td align="center"><a href="https://www.linkedin.com/in/andrecesar-dev/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/216065214?v=4" width="100px;" alt=""/><br /><sub><b>André Cesar </b></sub></a><br />❤️</td>
+    <td align="center"><a href="https://www.linkedin.com/in/brunamelodev/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/226072233?v=4" width="100px;" alt=""/><br /><sub><b>Bruna Melo</b></sub></a><br />❤️</td>
+    <td align="center"><a href="https://www.linkedin.com/in/giovannaroberta/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102972472?v=4" width="100px;" alt=""/><br /><sub><b>Giovana Roberta</b></sub></a><br />❤️</td>
+    <td align="center"><a href="https://www.linkedin.com/in/jacqueline-cardeal/"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>Jacqueline Cardeal</b></sub></a><br />❤️</td>
+    <td align="center"><a href="https://www.linkedin.com/in/renato-sales-desenvolvedor/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/101156709?v=4" width="100px;" alt=""/><br /><sub><b>Renato Sales</b></sub></a><br />❤️</td>
+  </tr>
+</table>
 
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
