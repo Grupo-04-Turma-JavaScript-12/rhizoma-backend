@@ -13,11 +13,9 @@ O **RHizoma** é um sistema de gestão de Recursos Humanos (RH) desenvolvido com
 5. [Arquitetura e Banco de Dados](#-arquitetura-e-banco-de-dados)
 6. [Requisitos do Sistema](#-requisitos-do-sistema)
 7. [Instalação](#-instalação)
-8. [Configuração Inicial](#-configuração-inicial)
 9. [Estrutura do Projeto](#-estrutura-do-projeto)
 10. [Boas Práticas](#-boas-práticas)
 11. [Como Contribuir](#-como-contribuir)
-12. [Licença](#-licença)
 
 ***
 
@@ -183,7 +181,7 @@ npm test
     <td align="center"><a href="https://www.linkedin.com/in/alberto-janeiro"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/67593467?v=44" width="100px;" alt=""/><br /><sub><b>Alberto Durán</b></sub></a><br />❤️</td>
     <td align="center"><a href="https://www.linkedin.com/in/andrecesar-dev/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/216065214?v=4" width="100px;" alt=""/><br /><sub><b>André Cesar </b></sub></a><br />❤️</td>
     <td align="center"><a href="https://www.linkedin.com/in/brunamelodev/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/226072233?v=4" width="100px;" alt=""/><br /><sub><b>Bruna Melo</b></sub></a><br />❤️</td>
-    <td align="center"><a href="https://www.linkedin.com/in/giovannaroberta/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102972472?v=4" width="100px;" alt=""/><br /><sub><b>Giovana Roberta</b></sub></a><br />❤️</td>
+    <td align="center"><a href="https://www.linkedin.com/in/giovannaroberta/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102972472?v=4" width="100px;" alt=""/><br /><sub><b>Giovanna Roberta</b></sub></a><br />❤️</td>
     <td align="center"><a href="https://www.linkedin.com/in/jacqueline-cardeal/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/141357140?v=4" width="100px;" alt=""/><br /><sub><b>Jacqueline Cardeal</b></sub></a><br />❤️</td>
     <td align="center"><a href="https://www.linkedin.com/in/renato-sales-desenvolvedor/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/101156709?v=4" width="100px;" alt=""/><br /><sub><b>Renato Sales</b></sub></a><br />❤️</td>
   </tr>
